@@ -26,22 +26,22 @@ const notoSerifJP = Noto_Serif_JP({
 
 const isDev = process.env.NODE_ENV === "development";
 const isStaging = process.env.VERCEL_TARGET_ENV === "staging";
-const siteTitle = "みらい議会｜チームみらい";
+const siteTitle = "TENJO AIインタビュー";
 const siteDescription =
-  "国会で今どんな法案が検討されているか、わかりやすく伝えるプラットフォーム";
-const siteName = "みらい議会";
+  "金沢のこれからについて、AIとの対話形式のインタビューで気軽に意見を届けられるサービス";
+const siteName = "TENJO AIインタビュー";
 const ogImage = {
   url: "/ogp.jpg",
   width: 1200,
   height: 630,
-  alt: "みらい議会のOGPイメージ",
+  alt: "TENJO AIインタビューのOGPイメージ",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.webUrl),
   title: siteTitle,
   description: siteDescription,
-  keywords: [siteName, "議案", "政治", "日本", "政策", "解説", "チームみらい"],
+  keywords: [siteName, "TENJO KANAZAWA", "金沢", "AIインタビュー", "意見募集"],
   icons: {
     icon: isDev
       ? "/icons/pwa/icon_dev_192_v3.png"
