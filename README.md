@@ -20,6 +20,22 @@
 - Change history: see the git commit history of this repository.
 - Original project: repository https://github.com/team-mirai/mirai-gikai / service https://gikai.team-mir.ai/
 
+## ローカル開発のメモ / Local development note
+
+> [!WARNING]
+> ローカル開発では **Supabase CLI v2.122.1** を使ってください。最新版(v3 系)は、このリポジトリの `supabase/config.toml` を受け付けません(`inbucket ... is no longer supported` で起動に失敗します)。CI も同じバージョンに固定しています(`.github/workflows/integration_test.yml`)。
+>
+> Use **Supabase CLI v2.122.1** for local development. The latest CLI (v3) rejects this repository's `supabase/config.toml` (it fails with `inbucket ... is no longer supported`). CI pins the same version.
+
+```bash
+npx supabase@2.122.1 start
+npx supabase@2.122.1 status
+```
+
+`pnpm db:reset` などのスクリプトは中で `npx supabase` を呼ぶため、そのままだと最新版が使われることがあります。その場合は `npx supabase@2.122.1 db reset` のあと、`pnpm seed` を実行してください。
+
+Scripts such as `pnpm db:reset` call `npx supabase` internally and may pick up the latest CLI. In that case, run `npx supabase@2.122.1 db reset` and then `pnpm seed`.
+
 ---
 
 以下は fork 元(みらい議会)の README です。 / Below is the original README of the upstream project (Mirai Gikai).
