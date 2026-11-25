@@ -4,6 +4,7 @@ import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FORK_NOTICE, FORK_NOTICE_LANG } from "@/config/fork-notice";
 import { isInterviewPage } from "@/lib/page-layout-utils";
 import { routes } from "@/lib/routes";
 import { policyLinks, primaryLinks } from "./footer.config";
@@ -19,6 +20,7 @@ export function Footer() {
     <footer className="bg-mirai-gradient text-slate-900">
       <div className="mx-auto flex w-full max-w-[500px] flex-col items-center px-6 py-14 pb-20 text-center">
         <FooterLogoSection />
+        <FooterForkNotice />
         <FooterPrimaryLinks />
         <FooterPolicies />
         <FooterCopyright />
@@ -40,6 +42,16 @@ function FooterLogoSection() {
         />
       </Link>
     </div>
+  );
+}
+
+function FooterForkNotice() {
+  const notice = FORK_NOTICE[FORK_NOTICE_LANG];
+
+  return (
+    <p className="w-full mb-6 border border-slate-900 px-4 py-3 text-[14px] font-bold leading-relaxed text-slate-900">
+      {notice.disclaimer}
+    </p>
   );
 }
 
