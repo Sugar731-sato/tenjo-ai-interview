@@ -39,7 +39,7 @@ describe("getStanceStyles", () => {
     const result = getStanceStyles(makeStance("for"), false);
     expect(result).toEqual({
       bg: "bg-stance-for-bg",
-      textColor: "text-primary-accent",
+      textColor: "text-stance-for",
       label: "賛成",
     });
   });
@@ -48,7 +48,7 @@ describe("getStanceStyles", () => {
     const result = getStanceStyles(makeStance("conditional_for"), false);
     expect(result).toEqual({
       bg: "bg-stance-for-bg",
-      textColor: "text-primary-accent",
+      textColor: "text-stance-for",
       label: "条件付き賛成",
     });
   });
@@ -74,8 +74,8 @@ describe("getStanceStyles", () => {
   it("neutral スタンスでデフォルトスタイルを返す", () => {
     const result = getStanceStyles(makeStance("neutral"), false);
     expect(result).toEqual({
-      bg: "bg-mirai-surface-muted",
-      textColor: "text-black",
+      bg: "bg-stance-neutral-bg",
+      textColor: "text-stance-neutral",
       label: "中立",
     });
   });
@@ -83,8 +83,8 @@ describe("getStanceStyles", () => {
   it("considering スタンスでデフォルトスタイルを返す", () => {
     const result = getStanceStyles(makeStance("considering"), false);
     expect(result).toEqual({
-      bg: "bg-mirai-surface-muted",
-      textColor: "text-black",
+      bg: "bg-stance-neutral-bg",
+      textColor: "text-stance-neutral",
       label: "検討中",
     });
   });
@@ -92,8 +92,8 @@ describe("getStanceStyles", () => {
   it("continued_deliberation スタンスでデフォルトスタイルを返す", () => {
     const result = getStanceStyles(makeStance("continued_deliberation"), false);
     expect(result).toEqual({
-      bg: "bg-mirai-surface-muted",
-      textColor: "text-black",
+      bg: "bg-stance-neutral-bg",
+      textColor: "text-stance-neutral",
       label: "継続審査中",
     });
   });
@@ -101,8 +101,8 @@ describe("getStanceStyles", () => {
   it("free_vote スタンスでデフォルトスタイルを返す", () => {
     const result = getStanceStyles(makeStance("free_vote"), false);
     expect(result).toEqual({
-      bg: "bg-mirai-surface-muted",
-      textColor: "text-black",
+      bg: "bg-stance-neutral-bg",
+      textColor: "text-stance-neutral",
       label: "自由投票",
     });
   });

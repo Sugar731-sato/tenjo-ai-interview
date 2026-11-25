@@ -29,7 +29,7 @@ export function getStanceStyles(
     case "conditional_for":
       return {
         bg: "bg-stance-for-bg",
-        textColor: "text-primary-accent",
+        textColor: "text-stance-for",
         label: STANCE_LABELS[stance.type],
       };
     case "against":
@@ -41,8 +41,8 @@ export function getStanceStyles(
       };
     default:
       return {
-        bg: "bg-mirai-surface-muted",
-        textColor: "text-black",
+        bg: "bg-stance-neutral-bg",
+        textColor: "text-stance-neutral",
         label: STANCE_LABELS[stance.type],
       };
   }
