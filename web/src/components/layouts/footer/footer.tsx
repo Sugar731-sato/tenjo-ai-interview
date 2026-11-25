@@ -4,6 +4,7 @@ import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { EXTERNAL_LINKS } from "@/config/external-links";
 import { FORK_NOTICE, FORK_NOTICE_LANG } from "@/config/fork-notice";
 import { isInterviewPage } from "@/lib/page-layout-utils";
 import { routes } from "@/lib/routes";
@@ -48,10 +49,32 @@ function FooterLogoSection() {
 function FooterForkNotice() {
   const notice = FORK_NOTICE[FORK_NOTICE_LANG];
 
+  const links = [
+    { label: notice.sourceCode, href: EXTERNAL_LINKS.GITHUB_REPO },
+    { label: notice.upstreamService, href: EXTERNAL_LINKS.UPSTREAM_SERVICE },
+    { label: notice.upstreamRepo, href: EXTERNAL_LINKS.UPSTREAM_REPO },
+  ];
+
   return (
-    <p className="w-full mb-6 border border-slate-900 px-4 py-3 text-[14px] font-bold leading-relaxed text-slate-900">
-      {notice.disclaimer}
-    </p>
+    <div className="w-full mb-6 border border-slate-900 px-4 py-3 text-slate-900">
+      <p className="text-[14px] font-bold leading-relaxed">
+        {notice.disclaimer}
+      </p>
+      <ul className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[12px] font-semibold">
+        {links.map((link) => (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-primary-accent"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

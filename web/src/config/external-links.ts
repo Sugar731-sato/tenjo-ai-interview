@@ -10,5 +10,9 @@ export const EXTERNAL_LINKS = {
   PRIVACY: "https://team-mir.ai/privacy",
   FAQ: "https://team-mirai.notion.site/FAQ-28cf6f56bae180bd84e7f7ae80f806a1",
   FORK_GUIDELINES_NOTE: "https://note.com/team_mirai_jp/n/nc59ec347e8c7",
-  GITHUB_REPO: "https://github.com/team-mirai/mirai-gikai",
+  // この fork 版自身のソースコード(AGPL-3.0 第13条・FORK_GUIDELINES 必須要件6)
+  GITHUB_REPO: "https://github.com/Sugar731-sato/tenjo-ai-interview",
+  // 本家(fork 元)のサービスとリポジトリ(FORK_GUIDELINES 推奨事項)
+  UPSTREAM_SERVICE: "https://gikai.team-mir.ai/",
+  UPSTREAM_REPO: "https://github.com/team-mirai/mirai-gikai",
 } as const;
