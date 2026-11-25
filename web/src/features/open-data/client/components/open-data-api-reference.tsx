@@ -51,7 +51,7 @@ export function OpenDataApiReference() {
             --scalar-background-2: var(--color-mirai-surface-gray);
             --scalar-background-3: var(--color-mirai-surface-tag);
             --scalar-sidebar-background-1: var(--color-white);
-            --scalar-color-accent: var(--color-mirai-brand-teal-hover);
+            --scalar-color-accent: var(--primary-accent);
             /* サイト共通の浮動ヘッダーの下に潜り込まないよう、ヘッダー分の高さを
                Scalarに伝える（(developers) レイアウトの pt-24 = 6rem と揃える） */
             --scalar-custom-header-height: 6rem;

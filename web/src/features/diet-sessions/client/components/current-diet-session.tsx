@@ -35,7 +35,7 @@ export function CurrentDietSession({
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
           <span
             className={`h-2 w-2 shrink-0 rounded-full ${
-              inSession ? "bg-mirai-brand-teal" : "bg-mirai-border-light"
+              inSession ? "bg-primary" : "bg-mirai-border-light"
             }`}
             aria-hidden
           />
@@ -51,7 +51,7 @@ export function CurrentDietSession({
             {inSession ? "国会会期中" : "国会閉会中"}
           </span>
           {inSession && (
-            <span className="text-[15px] font-bold text-mirai-brand-teal-deep md:ml-auto">
+            <span className="text-[15px] font-bold text-primary md:ml-auto">
               {session.name}
             </span>
           )}
@@ -118,7 +118,7 @@ function SessionProgressBar({
 function ClosedSessionSummary({ session }: { session: DietSession }) {
   return (
     <div className="-mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1.5">
-      <span className="text-[15px] font-bold text-mirai-brand-teal-deep">
+      <span className="text-[15px] font-bold text-primary">
         {session.name}は終了しました
       </span>
       {/*
