@@ -10,8 +10,6 @@ import { getBillTagIds } from "@/features/bills-edit/server/loaders/get-bill-tag
 import { toBreakingNewsStance } from "@/features/bills-edit/shared/utils/breaking-news-image";
 import { StanceForm } from "@/features/mirai-stance/client/components/stance-form";
 import { getStanceByBillId } from "@/features/mirai-stance/server/loaders/get-stance-by-bill-id";
-import { SupplementaryResolutionForms } from "@/features/supplementary-resolution/client/components/supplementary-resolution-forms";
-import { getSupplementaryResolutionsByBillId } from "@/features/supplementary-resolution/server/loaders/get-supplementary-resolutions-by-bill-id";
 import { loadTags } from "@/features/tags/server/loaders/load-tags";
 import { routes } from "@/lib/routes";
 
@@ -23,17 +21,9 @@ interface BillEditPageProps {
 
 export default async function BillEditPage({ params }: BillEditPageProps) {
   const { id } = await params;
-  const [
-    bill,
-    stance,
-    supplementaryResolutions,
-    allTags,
-    selectedTagIds,
-    contents,
-  ] = await Promise.all([
+  const [bill, stance, allTags, selectedTagIds, contents] = await Promise.all([
     getBillById(id),
     getStanceByBillId(id),
-    getSupplementaryResolutionsByBillId(id),
     loadTags(),
     getBillTagIds(id),
     getBillContents(id),
@@ -70,10 +60,6 @@ export default async function BillEditPage({ params }: BillEditPageProps) {
           shareImageDefaultTitle={normalTitle || bill.name}
         />
         <StanceForm billId={bill.id} stance={stance} billStatus={bill.status} />
-        <SupplementaryResolutionForms
-          billId={bill.id}
-          resolutions={supplementaryResolutions}
-        />
         <BillTagsForm
           billId={bill.id}
           allTags={allTags}
