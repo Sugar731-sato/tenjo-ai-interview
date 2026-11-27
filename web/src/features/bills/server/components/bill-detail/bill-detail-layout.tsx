@@ -3,7 +3,6 @@ import { InterviewLandingSection } from "@/features/interview-config/client/comp
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
 import { getPublicBillRespondents } from "@/features/user-topic-analysis/server/loaders/get-public-bill-respondents";
 import { BillDisclaimer } from "../../../client/components/bill-detail/bill-disclaimer";
-import { BillStatusProgress } from "../../../client/components/bill-detail/bill-status-progress";
 import type { BillWithContent } from "../../../shared/types";
 import { BillShareButtons } from "../share/bill-share-buttons";
 import { BillDetailHeader } from "./bill-detail-header";
@@ -21,23 +20,11 @@ export async function BillDetailLayout({ bill }: BillDetailLayoutProps) {
 
   return (
     <div className="container mx-auto pb-8 max-w-4xl">
-      <>
-        <BillDetailHeader
-          bill={bill}
-          hasInterviewConfig={interviewConfig != null}
-          opinionCount={respondents.length}
-        />
-        <Container>
-          {/* 議案ステータス進捗 */}
-          <div className="my-8">
-            <BillStatusProgress
-              status={bill.status}
-              originatingHouse={bill.originating_house}
-              statusNote={bill.status_note}
-            />
-          </div>
-        </Container>
-      </>
+      <BillDetailHeader
+        bill={bill}
+        hasInterviewConfig={interviewConfig != null}
+        opinionCount={respondents.length}
+      />
 
       <Container>
         {interviewConfig != null && (
