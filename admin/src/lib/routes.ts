@@ -13,7 +13,6 @@ export const routes = {
   billNew: () => "/bills/new" as const,
   admins: () => "/admins" as const,
   tags: () => "/tags" as const,
-  dietSessions: () => "/diet-sessions" as const,
   experts: () => "/experts" as const,
   interviews: () => "/interviews" as const,
 
@@ -21,8 +20,6 @@ export const routes = {
   billEdit: (billId: string) => `/bills/${billId}/edit` as const,
   billContentsEdit: (billId: string) =>
     `/bills/${billId}/contents/edit` as const,
-  billArticleReports: (billId: string) =>
-    `/bills/${billId}/article-reports` as const,
 
   // インタビュー
   billInterview: (billId: string) => `/bills/${billId}/interview` as const,

@@ -3,7 +3,6 @@ import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { DEFAULT_DIFFICULTY } from "@/features/bill-difficulty/shared/types";
 import { getInterviewLPLink } from "@/features/interview-config/shared/utils/interview-links";
 import { routes } from "@/lib/routes";
 import { formatDateWithDots } from "@/lib/utils/date";
@@ -94,15 +93,9 @@ export async function BillDetailHeader({
         <p className="text-sm text-muted-foreground font-medium mb-4">
           {bill.name}
         </p>
-        {reviewState !== "reviewed" && (
+        {reviewState === "in_review" && (
           <div className="mb-4">
-            <ReviewStateBanner
-              state={reviewState}
-              billId={bill.id}
-              difficultyLevel={
-                bill.bill_content?.difficulty_level ?? DEFAULT_DIFFICULTY
-              }
-            />
+            <ReviewStateBanner state={reviewState} />
           </div>
         )}
 

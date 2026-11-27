@@ -1,10 +1,8 @@
 # イラストの塗り替え
 
-イラスト3枚の緑の塗りを、1色に塗り替えます。黒い線・白・水玉の形は元のままです。macOS 専用です(swiftc と python3 を使います)。
+イラストの緑の塗りを、1色に塗り替えます。黒い線・白の部分は元のままです。macOS 専用です(swiftc を使います)。
 
-- `web/public/illustrations/interview-illustration.png`
-- `web/public/images/readingbook_woman_green.png`
-- `web/public/illustrations/inspiration-simple-green.svg`(中に埋め込まれた PNG を塗り替えます)
+- 対象: `web/public/illustrations/interview-illustration.png`
 
 ## 使い方
 
@@ -19,4 +17,4 @@ scripts/tenjo/recolor-illustrations/recolor-illustrations.sh D9C9A3     # 色を
 
 ## ベージュを #D9C9A3 に変えるとき
 
-`scripts/tenjo/recolor-illustrations/recolor-illustrations.sh D9C9A3` を実行し、3枚を確認してから「イラストをベージュ(#D9C9A3)に変更」としてコミットする。
+`scripts/tenjo/recolor-illustrations/recolor-illustrations.sh D9C9A3` を実行し、イラストを確認してから「イラストをベージュ(#D9C9A3)に変更」としてコミットする。

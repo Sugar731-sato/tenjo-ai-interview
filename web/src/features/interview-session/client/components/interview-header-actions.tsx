@@ -27,7 +27,13 @@ export function InterviewHeaderActions() {
   };
 
   return (
-    <Button variant="outline" size="sm" onClick={handleSaveAndExit}>
+    <Button
+      variant="outline"
+      size="sm"
+      // 暗いヘッダーの中では文字色がクリームを継ぐので、背景と文字を明示する
+      className="border-tenjo-cream bg-tenjo-cream text-tenjo-base hover:bg-tenjo-bubble"
+      onClick={handleSaveAndExit}
+    >
       保存して中断
     </Button>
   );
