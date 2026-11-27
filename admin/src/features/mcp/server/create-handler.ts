@@ -4,7 +4,6 @@ import {
   createMcpHandler,
   experimental_withMcpAuth as withMcpAuth,
 } from "mcp-handler";
-import { registerBillMilestoneTools } from "./tools/register-bill-milestone-tools";
 import { registerBillsTools } from "./tools/register-bills-tools";
 import { registerChatUsageTools } from "./tools/register-chat-usage-tools";
 import { registerInterviewMetricsTools } from "./tools/register-interview-metrics-tools";
@@ -19,7 +18,6 @@ export function createAdminMcpHandler() {
   const baseHandler = createMcpHandler(
     (baseServer) => {
       const server = withToolCallLogging(baseServer);
-      registerBillMilestoneTools(server);
       registerBillsTools(server);
       registerChatUsageTools(server);
       registerInterviewMetricsTools(server);
