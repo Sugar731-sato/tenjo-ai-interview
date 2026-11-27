@@ -3,7 +3,6 @@
 import {
   Edit,
   FileText,
-  Flag,
   type LucideIcon,
   MessageCircle,
   MoreVertical,
@@ -72,12 +71,6 @@ export function BillActionsMenu({ billId, billName }: BillActionsMenuProps) {
             icon={MessageCircle}
           >
             インタビュー設定
-          </BillActionMenuLink>
-          <BillActionMenuLink
-            href={routes.billArticleReports(billId) as Route}
-            icon={Flag}
-          >
-            誤り報告
           </BillActionMenuLink>
           <div className="my-1 border-t" />
           <DuplicateBillButton billId={billId} billName={billName} />

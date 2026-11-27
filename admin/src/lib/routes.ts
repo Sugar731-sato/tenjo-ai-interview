@@ -21,8 +21,6 @@ export const routes = {
   billEdit: (billId: string) => `/bills/${billId}/edit` as const,
   billContentsEdit: (billId: string) =>
     `/bills/${billId}/contents/edit` as const,
-  billArticleReports: (billId: string) =>
-    `/bills/${billId}/article-reports` as const,
 
   // インタビュー
   billInterview: (billId: string) => `/bills/${billId}/interview` as const,
