@@ -17,16 +17,11 @@ export const routes = {
   experts: () => "/experts" as const,
   interviews: () => "/interviews" as const,
   interviewOpinionBackfill: () => "/interview-opinion-backfill" as const,
-  userTopicAnalysisAll: () => "/user-topic-analysis" as const,
 
   // ── 議案配下 ──────────────────────────────────────
   billEdit: (billId: string) => `/bills/${billId}/edit` as const,
   billContentsEdit: (billId: string) =>
     `/bills/${billId}/contents/edit` as const,
-  billUserTopicAnalysis: (billId: string) =>
-    `/bills/${billId}/user-topic-analysis` as const,
-  billAnalysisViewer: (billId: string) =>
-    `/bills/${billId}/analysis-viewer` as const,
   billArticleReports: (billId: string) =>
     `/bills/${billId}/article-reports` as const,
 
