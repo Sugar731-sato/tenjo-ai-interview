@@ -4,4 +4,4 @@
 
 ## 手順5で削除
 
-- [ ] `web/public/icons/ai-chat.svg`: チャットの AI 側の表示を、丸い「AI」アバター(`MessageAiAvatar`)に置き換えたため、どこからも参照されなくなった(`5092eee7`)。
+- [x] `web/public/icons/ai-chat.svg`: チャットの AI 側の表示を、丸い「AI」アバター(`MessageAiAvatar`)に置き換えたため、どこからも参照されなくなった(`5092eee7`)。(手順5の W4 で削除済み)
