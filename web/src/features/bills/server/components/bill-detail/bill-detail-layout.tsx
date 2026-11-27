@@ -10,7 +10,6 @@ import { SupplementaryResolutionsSection } from "../../../client/components/bill
 import type { BillWithContent } from "../../../shared/types";
 import { getPublishedSupplementaryResolutions } from "../../loaders/get-published-supplementary-resolutions";
 import { BillShareButtons } from "../share/bill-share-buttons";
-import { BillContent } from "./bill-content";
 import { BillDetailHeader } from "./bill-detail-header";
 
 interface BillDetailLayoutProps {
@@ -57,8 +56,6 @@ export async function BillDetailLayout({
               statusNote={bill.status_note}
             />
           </div>
-
-          <BillContent bill={bill} />
         </Container>
       </BillDetailClient>
 
