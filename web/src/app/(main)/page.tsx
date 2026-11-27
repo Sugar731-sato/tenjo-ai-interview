@@ -2,7 +2,6 @@ import { Container } from "@/components/layouts/container";
 import { About } from "@/components/top/about";
 import { ComingSoonSection } from "@/components/top/coming-soon-section";
 import { TeamMirai } from "@/components/top/team-mirai";
-import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
 import { BillDisclaimer } from "@/features/bills/client/components/bill-detail/bill-disclaimer";
 import { BillSearchOverlay } from "@/features/bills/client/components/bill-search-overlay";
 import { BillsByTagSection } from "@/features/bills/server/components/bills-by-tag-section";
@@ -13,10 +12,7 @@ import { PastSessionList } from "@/features/bills/server/components/past-session
 import { PreviousSessionSection } from "@/features/bills/server/components/previous-session-section";
 import { getBillSearchData } from "@/features/bills/server/loaders/get-bill-search-data";
 import { loadHomeData } from "@/features/bills/server/loaders/load-home-data";
-import type { BillWithContent } from "@/features/bills/shared/types";
-import { chatBillName } from "@/features/bills/shared/utils/chat-bill-name";
 import { pickHomeSections } from "@/features/bills/shared/utils/pick-home-sections";
-import { HomeChatClient } from "@/features/chat/client/components/home-chat-client";
 import { CurrentDietSession } from "@/features/diet-sessions/client/components/current-diet-session";
 import { getCurrentDietSession } from "@/features/diet-sessions/server/loaders/get-current-diet-session";
 import { getLatestClosedDietSession } from "@/features/diet-sessions/server/loaders/get-latest-closed-diet-session";
@@ -39,33 +35,22 @@ export default async function Home() {
     },
     currentSession,
     latestClosedSession,
-    currentDifficulty,
     searchData,
   ] = await Promise.all([
     loadHomeData(),
     getCurrentDietSession(japanTime),
     getLatestClosedDietSession(japanTime),
-    getDifficultyLevel(),
     getBillSearchData(),
   ]);
 
   const inSession = currentSession !== null;
 
-  const { tagGroups, shownBills, featuredBillIds } = pickHomeSections({
+  const { tagGroups } = pickHomeSections({
     billsByTag,
     featuredBills,
     interviewOpenBills,
     inSession,
   });
-
-  const toBillChatContext = (bill: BillWithContent) => {
-    return {
-      name: chatBillName(bill),
-      summary: bill.bill_content?.summary,
-      tags: bill.tags?.map((tag) => tag.label) || [],
-      isFeatured: featuredBillIds.has(bill.id),
-    };
-  };
 
   return (
     <>
@@ -149,12 +134,6 @@ export default async function Home() {
         {/* 免責事項 */}
         <BillDisclaimer />
       </Container>
-
-      {/* チャット機能 */}
-      <HomeChatClient
-        currentDifficulty={currentDifficulty}
-        bills={shownBills.map(toBillChatContext)}
-      />
     </>
   );
 }

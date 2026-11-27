@@ -11,30 +11,20 @@ import {
   ReasoningTrigger,
 } from "@/components/ai-elements/reasoning";
 import { Response } from "@/components/ai-elements/response";
-import { SUGGEST_INTERVIEW_TOOL_TYPE } from "@/features/chat/shared/constants";
-import { InterviewSuggestionBanner } from "./interview-suggestion-banner";
 
 type RehypePlugins = ComponentProps<typeof Response>["rehypePlugins"];
 
 interface SystemMessageProps {
   message: UIMessage;
   isStreaming: boolean;
-  billId?: string;
-  billName?: string;
   rehypePlugins?: RehypePlugins;
 }
 
 export function SystemMessage({
   message,
   isStreaming,
-  billId,
-  billName,
   rehypePlugins,
 }: SystemMessageProps) {
-  const hasInterviewSuggestion = message.parts.some(
-    (part) => part.type === SUGGEST_INTERVIEW_TOOL_TYPE
-  );
-
   return (
     <Message from="assistant" className="items-start justify-start py-0">
       <MessageAiAvatar />
@@ -68,10 +58,6 @@ export function SystemMessage({
           }
           return null;
         })}
-        {/* ツール呼び出しがテキストより先に来ても、導線は返答の描画が終わってから表示する */}
-        {hasInterviewSuggestion && !isStreaming && billId && billName && (
-          <InterviewSuggestionBanner billId={billId} billName={billName} />
-        )}
       </MessageContent>
     </Message>
   );
