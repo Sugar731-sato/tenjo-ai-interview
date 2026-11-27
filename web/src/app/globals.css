@@ -81,16 +81,18 @@
   --color-mirai-border-light: #b1b1b1;
   --color-mirai-border-muted: #bebcbc;
 
-  /* Stance semantic colors */
-  --color-stance-for-bg: #ecfcf1;
-  --color-stance-for-badge-start: #e2f6f3;
-  --color-stance-for-badge-end: #eef6e2;
-  --color-stance-against: #c9272a;
-  --color-stance-against-light: #d23c3f;
-  --color-stance-against-bg: #fff1f1;
-  --color-stance-against-badge-bg: #ffeaea;
-  --color-stance-neutral: #805f34;
-  --color-stance-neutral-badge-bg: #f7e8db;
+  /* Stance semantic colors(緑は賛否の表示にだけ使う) */
+  --color-stance-for: #1f6b4f;
+  --color-stance-for-bg: #e4eee7;
+  --color-stance-for-badge-start: #e4eee7;
+  --color-stance-for-badge-end: #e4eee7;
+  --color-stance-against: #a4262c;
+  --color-stance-against-light: #a4262c;
+  --color-stance-against-bg: #f4e1de;
+  --color-stance-against-badge-bg: #f4e1de;
+  --color-stance-neutral: #5c5249;
+  --color-stance-neutral-bg: #efede8;
+  --color-stance-neutral-badge-bg: #efede8;
 
   /* Reaction */
   --color-mirai-reaction-active: #dd425f;
@@ -104,18 +106,25 @@
 
   /* Progress */
   --color-mirai-progress-track: #d9d9d9;
-  --color-mirai-progress-fill: #a9e89d;
+  --color-mirai-progress-fill: #311915;
 
   /* Gradient endpoints */
-  --color-mirai-gradient-start: #64d8c6;
-  --color-mirai-gradient-end: #bcecd3;
+  --color-mirai-gradient-start: #f3ead2;
+  --color-mirai-gradient-end: #e6dcc3;
 
-  /* Team Mirai brand (party design system) */
-  --color-mirai-brand-teal: #30bca7;
-  --color-mirai-brand-teal-hover: #089781;
-  --color-mirai-brand-teal-deep: #17594f;
-  --color-mirai-brand-teal-ink: #0b4036;
-  --color-mirai-brand-mint: #e2f6f3;
+  /* TENJO KANAZAWA brand(本家の teal 系トークンの置き換え) */
+  --color-tenjo-base: #311915;
+  --color-tenjo-cream: #fbf5e6;
+  --color-tenjo-paper: #fffdf7;
+  --color-tenjo-bubble: #f3ead2;
+  --color-tenjo-rule: #e6dcc3;
+  --color-tenjo-sub: #5c5249;
+  --color-tenjo-accent: #a4262c;
+
+  /* TENJO の角丸(--radius は shadcn 全体に効くので変えず、別名で持つ) */
+  --radius-tenjo-badge: 4px;
+  --radius-tenjo-card: 8px;
+  --radius-tenjo-panel: 12px;
 
   /* Topic analysis */
   --color-topic-info-bg: #e5f3f0;
@@ -139,8 +148,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #2aa693;
-  --primary-accent: #0f8472;
+  --primary: #311915;
+  --primary-accent: #a4262c;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -262,7 +271,11 @@
   }
 
   .bg-mirai-light-gradient {
-    background-image: linear-gradient(to bottom, #e2f6f3, #eef6e2);
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-tenjo-cream),
+      var(--color-tenjo-bubble)
+    );
   }
 
   .bg-mirai-white-fade {
@@ -289,6 +302,15 @@
   .font-lexend {
     font-family: var(--font-lexend-giga), system-ui, sans-serif;
   }
+}
+
+/* 英語の小さなラベル(例: 見出しの上の "PRIVACY POLICY") */
+@utility label-en {
+  font-family: var(--font-lexend-giga), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
 }
 
 /* カスタムアニメーション */

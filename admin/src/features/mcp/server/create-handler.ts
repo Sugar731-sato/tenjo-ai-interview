@@ -15,7 +15,6 @@ import { registerMiraiStanceTools } from "./tools/register-mirai-stance-tools";
 import { registerPreviewTools } from "./tools/register-preview-tools";
 import { registerSupplementaryResolutionTools } from "./tools/register-supplementary-resolution-tools";
 import { registerTagsTools } from "./tools/register-tags-tools";
-import { registerTopicAnalysisTools } from "./tools/register-topic-analysis-tools";
 import { withToolCallLogging } from "./utils/with-tool-call-logging";
 import { verifyMcpToken } from "./verify-token";
 
@@ -34,7 +33,6 @@ export function createAdminMcpHandler() {
       registerPreviewTools(server);
       registerSupplementaryResolutionTools(server);
       registerTagsTools(server);
-      registerTopicAnalysisTools(server);
     },
     {
       serverInfo: {

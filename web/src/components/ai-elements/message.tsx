@@ -20,18 +20,20 @@ export const Message = ({ className, from, ...props }: MessageProps) => (
 );
 
 const messageContentVariants = cva(
-  "is-user:dark flex flex-col gap-2 overflow-hidden rounded-lg text-sm",
+  "is-user:dark flex flex-col gap-2 overflow-hidden text-sm",
   {
     variants: {
       variant: {
         contained: [
-          "max-w-[80%] px-4 py-3",
+          "max-w-[80%] rounded-lg px-4 py-3",
           "group-[.is-user]:bg-primary group-[.is-user]:text-primary-foreground",
           "group-[.is-assistant]:bg-secondary group-[.is-assistant]:text-foreground",
         ],
+        // TENJO の吹き出し: 話し手側の上の角だけ小さくする
         flat: [
-          "group-[.is-user]:max-w-[80%] group-[.is-user]:bg-secondary group-[.is-user]:px-4 group-[.is-user]:py-3 group-[.is-user]:text-foreground",
-          "group-[.is-assistant]:text-foreground",
+          "px-4 py-2",
+          "group-[.is-user]:max-w-[80%] group-[.is-user]:rounded-[16px_4px_16px_16px] group-[.is-user]:border group-[.is-user]:border-tenjo-rule group-[.is-user]:bg-tenjo-paper group-[.is-user]:text-foreground",
+          "group-[.is-assistant]:min-w-0 group-[.is-assistant]:rounded-[4px_16px_16px_16px] group-[.is-assistant]:bg-tenjo-bubble group-[.is-assistant]:text-foreground",
         ],
       },
     },
@@ -55,6 +57,24 @@ export const MessageContent = ({
     {...props}
   >
     {children}
+  </div>
+);
+
+/** AI 側の吹き出しに添える、丸い「AI」アバター */
+export const MessageAiAvatar = ({
+  className,
+  ...props
+}: HTMLAttributes<HTMLDivElement>) => (
+  <div
+    role="img"
+    aria-label="AI"
+    className={cn(
+      "flex size-8 shrink-0 items-center justify-center rounded-full bg-tenjo-base font-lexend text-[10px] font-bold text-tenjo-cream",
+      className
+    )}
+    {...props}
+  >
+    AI
   </div>
 );
 

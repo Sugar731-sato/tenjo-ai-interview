@@ -1,3 +1,4 @@
+import { BarChart3 } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -10,10 +11,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { routes } from "@/lib/routes";
-import { BarChart3, Sparkles } from "lucide-react";
 import type { InterviewConfigWithBill } from "@/features/interview-config/server/repositories/interview-config-repository";
 import { getModeLabel } from "@/features/interview-config/shared/utils/get-mode-label";
+import { routes } from "@/lib/routes";
 
 interface AllInterviewConfigListProps {
   configs: InterviewConfigWithBill[];
@@ -109,24 +109,6 @@ export function AllInterviewConfigList({
                         >
                           <BarChart3 className="h-4 w-4" />
                           レポート
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="sm"
-                        className="gap-1"
-                      >
-                        <Link
-                          href={
-                            routes.billTopicAnalysis(
-                              config.bill_id,
-                              config.id
-                            ) as Route
-                          }
-                        >
-                          <Sparkles className="h-4 w-4" />
-                          トピック解析
                         </Link>
                       </Button>
                     </div>

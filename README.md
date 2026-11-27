@@ -1,3 +1,45 @@
+# TENJO AIインタビュー / TENJO AI Interview
+
+> [!IMPORTANT]
+> **本サービスは、政党チームみらいが運営しているものではありません。**
+> **This service is not operated by the political party Team Mirai.**
+
+## このリポジトリについて
+
+- このリポジトリは、[team-mirai/mirai-gikai](https://github.com/team-mirai/mirai-gikai)(AGPL-3.0)を fork し、「TENJO AIインタビュー」(ブランド: TENJO KANAZAWA)として改変したものです。
+- 改変を開始した日: 2026-11-25(fork 元のコミット: `aac6f9ba`)
+- ライセンス: fork 元と同じ **GNU Affero General Public License v3.0(AGPL-3.0)** です。[LICENSE](./LICENSE) は変更していません。
+- 変更の履歴: このリポジトリの git のコミット履歴を参照してください。
+- 本家: リポジトリ https://github.com/team-mirai/mirai-gikai / サービス https://gikai.team-mir.ai/
+
+## About this repository
+
+- This repository is a fork of [team-mirai/mirai-gikai](https://github.com/team-mirai/mirai-gikai) (AGPL-3.0), modified as "TENJO AI Interview" (brand: TENJO KANAZAWA).
+- Modifications started on: 2026-11-25 (forked from commit `aac6f9ba`)
+- License: **GNU Affero General Public License v3.0 (AGPL-3.0)**, the same as the original. The [LICENSE](./LICENSE) file is unchanged.
+- Change history: see the git commit history of this repository.
+- Original project: repository https://github.com/team-mirai/mirai-gikai / service https://gikai.team-mir.ai/
+
+## ローカル開発のメモ / Local development note
+
+> [!WARNING]
+> ローカル開発では **Supabase CLI v2.122.1** を使ってください。最新版(v3 系)は、このリポジトリの `supabase/config.toml` を受け付けません(`inbucket ... is no longer supported` で起動に失敗します)。CI も同じバージョンに固定しています(`.github/workflows/integration_test.yml`)。
+>
+> Use **Supabase CLI v2.122.1** for local development. The latest CLI (v3) rejects this repository's `supabase/config.toml` (it fails with `inbucket ... is no longer supported`). CI pins the same version.
+
+```bash
+npx supabase@2.122.1 start
+npx supabase@2.122.1 status
+```
+
+`pnpm db:reset` などのスクリプトは中で `npx supabase` を呼ぶため、そのままだと最新版が使われることがあります。その場合は `npx supabase@2.122.1 db reset` のあと、`pnpm seed` を実行してください。
+
+Scripts such as `pnpm db:reset` call `npx supabase` internally and may pick up the latest CLI. In that case, run `npx supabase@2.122.1 db reset` and then `pnpm seed`.
+
+---
+
+以下は fork 元(みらい議会)の README です。 / Below is the original README of the upstream project (Mirai Gikai).
+
 # みらい議会
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/team-mirai-volunteer/mirai-gikai)

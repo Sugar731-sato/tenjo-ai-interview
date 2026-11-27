@@ -29,7 +29,7 @@ export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
 
   return (
     <header className="px-3 fixed top-4 left-0 right-0 z-40 max-w-[1440px] mx-auto">
-      <div className="rounded-2xl bg-white shadow-sm mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="rounded-2xl bg-tenjo-base text-tenjo-cream shadow-sm mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo / Site Title */}
           <div className="flex items-center">
@@ -39,23 +39,24 @@ export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
               aria-label="ホーム"
             >
               <Image
-                src="/img/logo.svg"
-                alt="みらい議会"
+                src="/img/logo-cream.svg"
+                alt="TENJO KANAZAWA"
                 width={42}
                 height={36}
               />
               <Image
-                src="/img/service-logo.svg"
-                alt="みらい議会"
-                width={115}
-                height={21}
+                src="/img/service-logo-cream.svg"
+                alt=""
+                width={77}
+                height={30}
               />
             </Link>
           </div>
 
           {/* Navigation */}
           <nav
-            className="flex items-center space-x-2"
+            // 暗い背景の上では、オンのスイッチ(bg-primary)が背景と同じ色になるため、アクセント色にする
+            className="flex items-center space-x-2 [&_[data-slot=switch][data-state=checked]]:bg-tenjo-accent"
             aria-label="補助ナビゲーション"
           >
             {showDifficultySelector && (

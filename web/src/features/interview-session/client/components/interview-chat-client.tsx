@@ -6,6 +6,7 @@ import {
   Conversation,
   ConversationContent,
 } from "@/components/ai-elements/conversation";
+import { FORK_NOTICE, FORK_NOTICE_LANG } from "@/config/fork-notice";
 import { getBillDetailLink } from "@/features/interview-config/shared/utils/interview-links";
 import { isLoopFamilyMode } from "../../shared/utils/is-loop-family-mode";
 import { useInterviewChat } from "../hooks/use-interview-chat";
@@ -315,6 +316,11 @@ export function InterviewChatClient({
             />
           )}
         </div>
+
+        {/* フッターが出ない画面なので、非公式であることをここに1行で示す */}
+        <p className="px-6 pt-1 pb-2 text-center text-[11px] leading-snug text-tenjo-sub">
+          {FORK_NOTICE[FORK_NOTICE_LANG].disclaimer}
+        </p>
       </div>
     </div>
   );

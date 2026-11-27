@@ -110,7 +110,7 @@ export function HamburgerMenu() {
             ref={triggerRef}
             variant="ghost"
             size="icon"
-            className="h-10 w-10"
+            className="h-10 w-10 hover:bg-tenjo-cream/10 hover:text-tenjo-cream"
             aria-label="メニューを開く"
           >
             <Menu className="h-5 w-5" />

@@ -8,7 +8,6 @@ import {
   FolderInput,
   Pencil,
   Plus,
-  Sparkles,
   Trash2,
 } from "lucide-react";
 import type { Route } from "next";
@@ -283,16 +282,6 @@ export function InterviewConfigList({
                           <Button variant="ghost" size="sm" className="gap-1">
                             <BarChart3 className="h-4 w-4" />
                             レポート
-                          </Button>
-                        </Link>
-                        <Link
-                          href={
-                            routes.billTopicAnalysis(billId, config.id) as Route
-                          }
-                        >
-                          <Button variant="ghost" size="sm" className="gap-1">
-                            <Sparkles className="h-4 w-4" />
-                            トピック解析
                           </Button>
                         </Link>
                       </div>
