@@ -51,8 +51,6 @@ function FooterForkNotice() {
 
   const links = [
     { label: notice.sourceCode, href: EXTERNAL_LINKS.GITHUB_REPO },
-    { label: notice.upstreamService, href: EXTERNAL_LINKS.UPSTREAM_SERVICE },
-    { label: notice.upstreamRepo, href: EXTERNAL_LINKS.UPSTREAM_REPO },
   ];
 
   return (

@@ -12,7 +12,4 @@ export const EXTERNAL_LINKS = {
   FORK_GUIDELINES_NOTE: "https://note.com/team_mirai_jp/n/nc59ec347e8c7",
   // この fork 版自身のソースコード(AGPL-3.0 第13条・FORK_GUIDELINES 必須要件6)
   GITHUB_REPO: "https://github.com/Sugar731-sato/tenjo-ai-interview",
-  // 本家(fork 元)のサービスとリポジトリ(FORK_GUIDELINES 推奨事項)
-  UPSTREAM_SERVICE: "https://gikai.team-mir.ai/",
-  UPSTREAM_REPO: "https://github.com/team-mirai/mirai-gikai",
 } as const;
