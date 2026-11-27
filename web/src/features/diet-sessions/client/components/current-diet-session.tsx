@@ -31,7 +31,7 @@ export function CurrentDietSession({
   // ここで余白を確保する（パンくずを持つページと同じ規約）。
   return (
     <Container className="pt-24 md:pt-5">
-      <div className="flex flex-col gap-6 rounded-2xl bg-mirai-light-gradient px-5 py-5">
+      <div className="flex flex-col gap-6 rounded-tenjo-panel bg-mirai-light-gradient px-5 py-5">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
           <span
             className={`h-2 w-2 shrink-0 rounded-full ${

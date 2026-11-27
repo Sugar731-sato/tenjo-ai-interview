@@ -81,7 +81,7 @@ export function BillCard({ bill }: BillCardProps) {
                     <BillTag key={tag.id} tag={tag} />
                   ))}
                   {bill.hasPublicInterview && (
-                    <span className="inline-flex items-center justify-center rounded-[4px] bg-tenjo-bubble px-3 py-1 text-xs font-medium text-primary">
+                    <span className="inline-flex items-center justify-center rounded-tenjo-badge bg-tenjo-bubble px-3 py-1 text-xs font-medium text-primary">
                       AIインタビュー受付中
                     </span>
                   )}
