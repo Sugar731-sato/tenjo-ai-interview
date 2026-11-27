@@ -1,6 +1,10 @@
 import type { UIMessage } from "@ai-sdk/react";
 import type { ComponentProps } from "react";
-import { Message, MessageContent } from "@/components/ai-elements/message";
+import {
+  Message,
+  MessageAiAvatar,
+  MessageContent,
+} from "@/components/ai-elements/message";
 import {
   Reasoning,
   ReasoningContent,
@@ -32,7 +36,8 @@ export function SystemMessage({
   );
 
   return (
-    <Message from="assistant" className="justify-start py-0">
+    <Message from="assistant" className="items-start justify-start py-0">
+      <MessageAiAvatar />
       <MessageContent
         variant="flat"
         className="text-sm font-medium leading-[1.8] text-mirai-text"

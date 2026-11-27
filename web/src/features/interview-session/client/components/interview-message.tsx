@@ -1,5 +1,4 @@
 import type { UIMessage } from "@ai-sdk/react";
-import Image from "next/image";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { SystemMessage } from "@/features/chat/client/components/system-message";
@@ -36,15 +35,7 @@ export function InterviewMessage({
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex-shrink-0">
-        <Image
-          src="/icons/ai-chat.svg"
-          alt="AI"
-          width={36}
-          height={36}
-          className="rounded-full"
-        />
-      </div>
+      {/* 「AI」アバターは SystemMessage が吹き出しの横に出す */}
       <div className="flex-1 space-y-2">
         <SystemMessage
           message={message}
