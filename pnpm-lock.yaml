@@ -53,9 +53,6 @@ importers:
       '@mirai-gikai/supabase':
         specifier: workspace:*
         version: link:../packages/supabase
-      '@mirai-gikai/topic-analysis-core':
-        specifier: workspace:*
-        version: link:../packages/topic-analysis-core
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.32.0(zod@4.6.6)
