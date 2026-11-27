@@ -3,11 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BillEditForm } from "@/features/bills-edit/client/components/bill-edit-form";
 import { BillTagsForm } from "@/features/bills-edit/client/components/bill-tags-form";
-import { BreakingNewsImageGenerator } from "@/features/bills-edit/client/components/breaking-news-image-generator";
 import { getBillById } from "@/features/bills-edit/server/loaders/get-bill-by-id";
 import { getBillContents } from "@/features/bills-edit/server/loaders/get-bill-contents";
 import { getBillTagIds } from "@/features/bills-edit/server/loaders/get-bill-tag-ids";
-import { toBreakingNewsStance } from "@/features/bills-edit/shared/utils/breaking-news-image";
 import { StanceForm } from "@/features/mirai-stance/client/components/stance-form";
 import { getStanceByBillId } from "@/features/mirai-stance/server/loaders/get-stance-by-bill-id";
 import { loadTags } from "@/features/tags/server/loaders/load-tags";
@@ -64,13 +62,6 @@ export default async function BillEditPage({ params }: BillEditPageProps) {
           billId={bill.id}
           allTags={allTags}
           selectedTagIds={selectedTagIds}
-        />
-        <BreakingNewsImageGenerator
-          billId={bill.id}
-          originatingHouse={bill.originating_house}
-          proposalType={bill.proposal_type}
-          defaultTitle={normalTitle || bill.name}
-          publishedStance={toBreakingNewsStance(stance, new Date())}
         />
       </div>
     </div>
