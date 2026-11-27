@@ -5,8 +5,6 @@ import { BillsByTagSection } from "@/features/bills/server/components/bills-by-t
 import { CategoryTabs } from "@/features/bills/server/components/category-tabs";
 import { FeaturedBillSection } from "@/features/bills/server/components/featured-bill-section";
 import { InterviewOpenBillSection } from "@/features/bills/server/components/interview-open-bill-section";
-import { PastSessionList } from "@/features/bills/server/components/past-session-list";
-import { PreviousSessionSection } from "@/features/bills/server/components/previous-session-section";
 import { getBillSearchData } from "@/features/bills/server/loaders/get-bill-search-data";
 import { loadHomeData } from "@/features/bills/server/loaders/load-home-data";
 import { pickHomeSections } from "@/features/bills/shared/utils/pick-home-sections";
@@ -22,13 +20,7 @@ export default async function Home() {
   const japanTime = getJapanTime();
   // ゆくゆくタグ機能がマージされたらBFFに統合する
   const [
-    {
-      billsByTag,
-      featuredBills,
-      interviewOpenBills,
-      previousSessionData,
-      pastSessions,
-    },
+    { billsByTag, featuredBills, interviewOpenBills },
     currentSession,
     latestClosedSession,
     searchData,
@@ -98,24 +90,6 @@ export default async function Home() {
           </main>
         </div>
       </Container>
-
-      {/* 前回の国会セクション（Archive） */}
-      {(previousSessionData || pastSessions.length > 0) && (
-        <div className="bg-mirai-surface-muted py-10">
-          <Container>
-            <div className="flex flex-col gap-10">
-              {previousSessionData && (
-                <PreviousSessionSection
-                  session={previousSessionData.session}
-                  bills={previousSessionData.bills}
-                  totalBillCount={previousSessionData.totalBillCount}
-                />
-              )}
-              <PastSessionList sessions={pastSessions} />
-            </div>
-          </Container>
-        </div>
-      )}
 
       <Container>
         {/* 免責事項 */}
