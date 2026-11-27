@@ -6,15 +6,12 @@ import { getPublicBillRespondents } from "@/features/user-topic-analysis/server/
 import { BillDetailClient } from "../../../client/components/bill-detail/bill-detail-client";
 import { BillDisclaimer } from "../../../client/components/bill-detail/bill-disclaimer";
 import { BillStatusProgress } from "../../../client/components/bill-detail/bill-status-progress";
-import { MiraiStanceCard } from "../../../client/components/bill-detail/mirai-stance-card";
 import { SupplementaryResolutionsSection } from "../../../client/components/bill-detail/supplementary-resolutions-section";
 import type { BillWithContent } from "../../../shared/types";
-import { getBillVideos } from "../../loaders/get-bill-videos";
 import { getPublishedSupplementaryResolutions } from "../../loaders/get-published-supplementary-resolutions";
 import { BillShareButtons } from "../share/bill-share-buttons";
 import { BillContent } from "./bill-content";
 import { BillDetailHeader } from "./bill-detail-header";
-import { BillVideosSection } from "./bill-videos-section";
 
 interface BillDetailLayoutProps {
   bill: BillWithContent;
@@ -25,12 +22,11 @@ export async function BillDetailLayout({
   bill,
   currentDifficulty,
 }: BillDetailLayoutProps) {
-  const [interviewConfig, respondents, videos, supplementaryResolutions] =
+  const [interviewConfig, respondents, supplementaryResolutions] =
     await Promise.all([
       getInterviewConfig(bill.id),
       // レポート一覧（/bills/[id]/opinions）と同じ読み込みで、件数をそろえる
       getPublicBillRespondents(bill.id),
-      getBillVideos(bill.id),
       getPublishedSupplementaryResolutions(bill.id),
     ]);
 
@@ -70,24 +66,6 @@ export async function BillDetailLayout({
         {interviewConfig != null && (
           <div className="my-8">
             <InterviewLandingSection billId={bill.id} />
-          </div>
-        )}
-        {/*
-          賛否が未設定・非公開（公開日時前を含む）なら出さない。法案提出前でも、
-          賛否を登録していない段階で「法案提出前」のカードだけを出すことはしない。
-        */}
-        {bill.mirai_stance && (
-          <div className="my-8">
-            {/*
-              動画は賛否の判断に関する議論なので、賛否カードの中に置く。
-              賛否が公開されていない間は動画も出さない。
-            */}
-            <MiraiStanceCard
-              stance={bill.mirai_stance}
-              billStatus={bill.status}
-            >
-              {videos.length > 0 && <BillVideosSection videos={videos} />}
-            </MiraiStanceCard>
           </div>
         )}
         {/* 附帯決議は院ごとに公開確認を経て公開する。公開済みのものが無ければ出さない */}
