@@ -32,7 +32,6 @@ import {
   HOUSE_LABELS,
   type OriginatingHouse,
 } from "@/features/bills/shared/types";
-import type { DietSession } from "@/features/diet-sessions/shared/types";
 import type { BillCreateInput } from "../../shared/types";
 import { shouldAutoCloseInterviewOnBillStatus } from "../../shared/utils/should-auto-close-interview";
 import { ShareImageGenerator } from "./share-image-generator";
@@ -74,14 +73,12 @@ const ARTICLE_KIND_OPTIONS = Object.entries(ARTICLE_KIND_LABELS).map(
 interface BillFormFieldsProps {
   control: Control<BillCreateInput>;
   billId?: string;
-  dietSessions: DietSession[];
   shareImageDefaultTitle?: string;
 }
 
 export function BillFormFields({
   control,
   billId,
-  dietSessions,
   shareImageDefaultTitle,
 }: BillFormFieldsProps) {
   return (
@@ -330,37 +327,6 @@ export function BillFormFields({
             </FormControl>
             <FormDescription>
               コンテンツ同期用の識別子です（最大200文字）
-            </FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={control}
-        name="diet_session_id"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>国会会期</FormLabel>
-            <Select
-              onValueChange={field.onChange}
-              value={field.value ?? undefined}
-            >
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder="国会会期を選択" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {dietSessions.map((session) => (
-                  <SelectItem key={session.id} value={session.id}>
-                    {session.name}（{session.start_date}〜{session.end_date}）
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <FormDescription>
-              議案が提出された国会会期を選択してください
             </FormDescription>
             <FormMessage />
           </FormItem>

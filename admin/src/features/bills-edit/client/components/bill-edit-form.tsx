@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 
-import type { DietSession } from "@/features/diet-sessions/shared/types";
 import { updateBill } from "../../server/actions/update-bill";
 import {
   type Bill,
@@ -19,21 +18,14 @@ import { BillFormFields } from "./bill-form-fields";
 
 interface BillEditFormProps {
   bill: Bill;
-  dietSessions: DietSession[];
   shareImageDefaultTitle: string;
 }
 
 export function BillEditForm({
   bill,
-  dietSessions,
   shareImageDefaultTitle,
 }: BillEditFormProps) {
   const { isSubmitting, error, handleSubmit, handleCancel } = useBillForm();
-
-  // If bill has no diet_session_id, default to the latest session (first in the list)
-  const defaultDietSessionId =
-    bill.diet_session_id ??
-    (dietSessions.length > 0 ? dietSessions[0].id : null);
 
   const form = useForm<BillUpdateInput>({
     resolver: zodResolver(billUpdateSchema),
@@ -55,7 +47,7 @@ export function BillEditForm({
       is_featured: bill.is_featured,
       is_review_completed: bill.is_review_completed,
       article_kind: bill.article_kind,
-      diet_session_id: defaultDietSessionId,
+      diet_session_id: bill.diet_session_id,
       knowledge_source: bill.knowledge_source ?? "",
       use_knowledge_source_in_chat: bill.use_knowledge_source_in_chat,
     },
@@ -79,7 +71,6 @@ export function BillEditForm({
             <BillFormFields
               control={form.control}
               billId={bill.id}
-              dietSessions={dietSessions}
               shareImageDefaultTitle={shareImageDefaultTitle}
             />
 

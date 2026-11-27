@@ -7,7 +7,6 @@ import {
 import { registerBillMilestoneTools } from "./tools/register-bill-milestone-tools";
 import { registerBillsTools } from "./tools/register-bills-tools";
 import { registerChatUsageTools } from "./tools/register-chat-usage-tools";
-import { registerDietSessionsTools } from "./tools/register-diet-sessions-tools";
 import { registerInterviewMetricsTools } from "./tools/register-interview-metrics-tools";
 import { registerInterviewTools } from "./tools/register-interview-tools";
 import { registerMiraiStanceTools } from "./tools/register-mirai-stance-tools";
@@ -24,7 +23,6 @@ export function createAdminMcpHandler() {
       registerBillMilestoneTools(server);
       registerBillsTools(server);
       registerChatUsageTools(server);
-      registerDietSessionsTools(server);
       registerInterviewMetricsTools(server);
       registerInterviewTools(server);
       registerMiraiStanceTools(server);

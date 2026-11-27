@@ -8,7 +8,6 @@ import { getBillById } from "@/features/bills-edit/server/loaders/get-bill-by-id
 import { getBillContents } from "@/features/bills-edit/server/loaders/get-bill-contents";
 import { getBillTagIds } from "@/features/bills-edit/server/loaders/get-bill-tag-ids";
 import { toBreakingNewsStance } from "@/features/bills-edit/shared/utils/breaking-news-image";
-import { loadDietSessions } from "@/features/diet-sessions/server/loaders/load-diet-sessions";
 import { StanceForm } from "@/features/mirai-stance/client/components/stance-form";
 import { getStanceByBillId } from "@/features/mirai-stance/server/loaders/get-stance-by-bill-id";
 import { SupplementaryResolutionForms } from "@/features/supplementary-resolution/client/components/supplementary-resolution-forms";
@@ -30,7 +29,6 @@ export default async function BillEditPage({ params }: BillEditPageProps) {
     supplementaryResolutions,
     allTags,
     selectedTagIds,
-    dietSessions,
     contents,
   ] = await Promise.all([
     getBillById(id),
@@ -38,7 +36,6 @@ export default async function BillEditPage({ params }: BillEditPageProps) {
     getSupplementaryResolutionsByBillId(id),
     loadTags(),
     getBillTagIds(id),
-    loadDietSessions(),
     getBillContents(id),
   ]);
 
@@ -70,7 +67,6 @@ export default async function BillEditPage({ params }: BillEditPageProps) {
       <div className="space-y-6">
         <BillEditForm
           bill={bill}
-          dietSessions={dietSessions}
           shareImageDefaultTitle={normalTitle || bill.name}
         />
         <StanceForm billId={bill.id} stance={stance} billStatus={bill.status} />
