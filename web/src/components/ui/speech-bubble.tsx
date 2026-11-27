@@ -25,25 +25,25 @@ const SpeechBubble = forwardRef<HTMLDivElement, SpeechBubbleProps>(
     // 位置とアラインメントに応じたクラス
     const positionClasses = {
       top: cn(
-        "after:bottom-full after:border-b-white after:border-x-[14px] after:border-b-[20px]",
+        "after:bottom-full after:border-b-tenjo-paper after:border-x-[14px] after:border-b-[20px]",
         tailAlign === "center" && "after:left-1/2 after:-translate-x-1/2",
         tailAlign === "start" && "after:left-6",
         tailAlign === "end" && "after:right-6"
       ),
       bottom: cn(
-        "after:top-full after:border-t-white after:border-x-[14px] after:border-t-[20px]",
+        "after:top-full after:border-t-tenjo-paper after:border-x-[14px] after:border-t-[20px]",
         tailAlign === "center" && "after:left-1/2 after:-translate-x-1/2",
         tailAlign === "start" && "after:left-6",
         tailAlign === "end" && "after:right-6"
       ),
       left: cn(
-        "after:right-full after:border-r-white after:border-y-[14px] after:border-r-[20px]",
+        "after:right-full after:border-r-tenjo-paper after:border-y-[14px] after:border-r-[20px]",
         tailAlign === "center" && "after:top-1/2 after:-translate-y-1/2",
         tailAlign === "start" && "after:top-6",
         tailAlign === "end" && "after:bottom-6"
       ),
       right: cn(
-        "after:left-full after:border-l-white after:border-y-[14px] after:border-l-[20px]",
+        "after:left-full after:border-l-tenjo-paper after:border-y-[14px] after:border-l-[20px]",
         tailAlign === "center" && "after:top-1/2 after:-translate-y-1/2",
         tailAlign === "start" && "after:top-6",
         tailAlign === "end" && "after:bottom-6"
@@ -54,7 +54,7 @@ const SpeechBubble = forwardRef<HTMLDivElement, SpeechBubbleProps>(
       <div
         ref={ref}
         className={cn(
-          "relative bg-white rounded-[24px] px-8 py-10",
+          "relative bg-tenjo-paper rounded-2xl px-8 py-10",
           tailBaseClasses,
           positionClasses,
           className
