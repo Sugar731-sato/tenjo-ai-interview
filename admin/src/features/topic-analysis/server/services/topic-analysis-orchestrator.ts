@@ -1,5 +1,6 @@
 import "server-only";
 
+import { fetchBillWithContents } from "@/features/interview-simulation/server/repositories/interview-simulation-repository";
 import { registerNodeTelemetry } from "@/lib/telemetry/register";
 import { ANALYSIS_STEPS } from "../../shared/constants";
 import type {
@@ -11,7 +12,6 @@ import {
   createClassifications,
   createTopics,
   createVersion,
-  fetchBillWithContents,
   fetchCompletedInterviewReports,
   loadPhaseData,
   savePhaseData,

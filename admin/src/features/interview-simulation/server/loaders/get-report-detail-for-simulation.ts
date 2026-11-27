@@ -15,9 +15,11 @@ import {
   findInterviewMessagesBySessionId,
   findInterviewSessionById,
 } from "@/features/interview-reports/server/repositories/interview-report-repository";
-import { fetchBillWithContents } from "@/features/topic-analysis/server/repositories/topic-analysis-repository";
 import type { OriginalInterviewSnapshot } from "../../shared/types";
-import { findInterviewReportById } from "../repositories/interview-simulation-repository";
+import {
+  fetchBillWithContents,
+  findInterviewReportById,
+} from "../repositories/interview-simulation-repository";
 
 export interface ReportDetailForSimulation {
   snapshot: OriginalInterviewSnapshot;
