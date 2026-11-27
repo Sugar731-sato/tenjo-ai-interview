@@ -93,9 +93,7 @@ export default function DevelopersPage() {
         <Container className="space-y-10">
           {/* Team Mirai デザインシステムの節見出し: 英字ラベル + 日本語見出し */}
           <header className="space-y-2">
-            <p className="font-lexend text-sm font-semibold tracking-[0.14em] text-primary">
-              Developers
-            </p>
+            <p className="label-en text-primary">Developers</p>
             <h1 className="text-2xl font-bold tracking-wider text-black sm:text-3xl">
               開発者向け
             </h1>
