@@ -6,8 +6,6 @@ import { BillTagsForm } from "@/features/bills-edit/client/components/bill-tags-
 import { getBillById } from "@/features/bills-edit/server/loaders/get-bill-by-id";
 import { getBillContents } from "@/features/bills-edit/server/loaders/get-bill-contents";
 import { getBillTagIds } from "@/features/bills-edit/server/loaders/get-bill-tag-ids";
-import { StanceForm } from "@/features/mirai-stance/client/components/stance-form";
-import { getStanceByBillId } from "@/features/mirai-stance/server/loaders/get-stance-by-bill-id";
 import { loadTags } from "@/features/tags/server/loaders/load-tags";
 import { routes } from "@/lib/routes";
 
@@ -19,9 +17,8 @@ interface BillEditPageProps {
 
 export default async function BillEditPage({ params }: BillEditPageProps) {
   const { id } = await params;
-  const [bill, stance, allTags, selectedTagIds, contents] = await Promise.all([
+  const [bill, allTags, selectedTagIds, contents] = await Promise.all([
     getBillById(id),
-    getStanceByBillId(id),
     loadTags(),
     getBillTagIds(id),
     getBillContents(id),
@@ -57,7 +54,6 @@ export default async function BillEditPage({ params }: BillEditPageProps) {
           bill={bill}
           shareImageDefaultTitle={normalTitle || bill.name}
         />
-        <StanceForm billId={bill.id} stance={stance} billStatus={bill.status} />
         <BillTagsForm
           billId={bill.id}
           allTags={allTags}
