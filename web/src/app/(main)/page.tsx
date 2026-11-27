@@ -1,7 +1,4 @@
 import { Container } from "@/components/layouts/container";
-import { About } from "@/components/top/about";
-import { ComingSoonSection } from "@/components/top/coming-soon-section";
-import { TeamMirai } from "@/components/top/team-mirai";
 import { BillDisclaimer } from "@/features/bills/client/components/bill-detail/bill-disclaimer";
 import { BillSearchOverlay } from "@/features/bills/client/components/bill-search-overlay";
 import { BillsByTagSection } from "@/features/bills/server/components/bills-by-tag-section";
@@ -29,7 +26,6 @@ export default async function Home() {
       billsByTag,
       featuredBills,
       interviewOpenBills,
-      comingSoonBills,
       previousSessionData,
       pastSessions,
     },
@@ -99,9 +95,6 @@ export default async function Home() {
 
             {/* タグ別議案一覧セクション（タグに紐づく議案を全件出す） */}
             <BillsByTagSection billsByTag={tagGroups} />
-
-            {/* Coming soonセクション */}
-            <ComingSoonSection bills={comingSoonBills} />
           </main>
         </div>
       </Container>
@@ -125,12 +118,6 @@ export default async function Home() {
       )}
 
       <Container>
-        {/* みらい議会とは セクション */}
-        <About />
-
-        {/* チームみらいについて セクション */}
-        <TeamMirai />
-
         {/* 免責事項 */}
         <BillDisclaimer />
       </Container>
