@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ChartNetwork,
   Edit,
   FileText,
   Flag,
@@ -73,12 +72,6 @@ export function BillActionsMenu({ billId, billName }: BillActionsMenuProps) {
             icon={MessageCircle}
           >
             インタビュー設定
-          </BillActionMenuLink>
-          <BillActionMenuLink
-            href={routes.billUserTopicAnalysis(billId) as Route}
-            icon={ChartNetwork}
-          >
-            トピック分析
           </BillActionMenuLink>
           <BillActionMenuLink
             href={routes.billArticleReports(billId) as Route}
