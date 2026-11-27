@@ -40,12 +40,4 @@ export const routes = {
     `/bills/${billId}/interview/${configId}/reports/${sessionId}` as const,
 
   // トピック解析（インタビュー設定配下）
-  billTopicAnalysis: (billId: string, configId: string) =>
-    `/bills/${billId}/interview/${configId}/topic-analysis` as const,
-  billTopicAnalysisDetail: (
-    billId: string,
-    configId: string,
-    versionId: string
-  ) =>
-    `/bills/${billId}/interview/${configId}/topic-analysis/${versionId}` as const,
 } as const;
