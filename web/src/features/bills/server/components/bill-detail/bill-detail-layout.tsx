@@ -4,9 +4,7 @@ import { getInterviewConfig } from "@/features/interview-config/server/loaders/g
 import { getPublicBillRespondents } from "@/features/user-topic-analysis/server/loaders/get-public-bill-respondents";
 import { BillDisclaimer } from "../../../client/components/bill-detail/bill-disclaimer";
 import { BillStatusProgress } from "../../../client/components/bill-detail/bill-status-progress";
-import { SupplementaryResolutionsSection } from "../../../client/components/bill-detail/supplementary-resolutions-section";
 import type { BillWithContent } from "../../../shared/types";
-import { getPublishedSupplementaryResolutions } from "../../loaders/get-published-supplementary-resolutions";
 import { BillShareButtons } from "../share/bill-share-buttons";
 import { BillDetailHeader } from "./bill-detail-header";
 
@@ -15,13 +13,11 @@ interface BillDetailLayoutProps {
 }
 
 export async function BillDetailLayout({ bill }: BillDetailLayoutProps) {
-  const [interviewConfig, respondents, supplementaryResolutions] =
-    await Promise.all([
-      getInterviewConfig(bill.id),
-      // レポート一覧（/bills/[id]/opinions）と同じ読み込みで、件数をそろえる
-      getPublicBillRespondents(bill.id),
-      getPublishedSupplementaryResolutions(bill.id),
-    ]);
+  const [interviewConfig, respondents] = await Promise.all([
+    getInterviewConfig(bill.id),
+    // レポート一覧（/bills/[id]/opinions）と同じ読み込みで、件数をそろえる
+    getPublicBillRespondents(bill.id),
+  ]);
 
   return (
     <div className="container mx-auto pb-8 max-w-4xl">
@@ -47,14 +43,6 @@ export async function BillDetailLayout({ bill }: BillDetailLayoutProps) {
         {interviewConfig != null && (
           <div className="my-8">
             <InterviewLandingSection billId={bill.id} />
-          </div>
-        )}
-        {/* 附帯決議は院ごとに公開確認を経て公開する。公開済みのものが無ければ出さない */}
-        {supplementaryResolutions.length > 0 && (
-          <div className="my-8">
-            <SupplementaryResolutionsSection
-              resolutions={supplementaryResolutions}
-            />
           </div>
         )}
         {/* シェアボタン */}
