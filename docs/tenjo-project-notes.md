@@ -48,6 +48,9 @@
 
 ## 進め方のルール
 
+- **TENJO の作業は `tenjo/main` から切る。`develop` は本家と同じに保つ。**（CLAUDE.md の「develop から分岐」より、こちらを優先する）
+  - `develop` には、TENJO の変更を何も取り込まない。`.github/workflows/deploy.yml` は `develop` への push で本番 DB のマイグレーションとデプロイを動かすため。
+  - 手順のブランチ（`tenjo/step-N`）は、PR で `tenjo/main` に取り込む。マージは「Create a merge commit」で行う。
 - 手順ごとにブランチを切る（`tenjo/step-N`）。
 - push は、オーナーの許可を得てから行う。
 - 削除と、DB のマイグレーションの変更も、許可を得てから行う。
@@ -56,6 +59,24 @@
 - 削除などの作業は小さなステップに分け、1ステップごとに「変更 → 型チェック → テスト → コミット」を行う。テストはパッケージごとに順番に実行し（同時に実行しない）、`tests/supabase` などの統合テストも毎回実行する。
 - 型チェックの前に、`corepack pnpm --filter web exec next typegen` と `corepack pnpm --filter admin exec next typegen` を実行する。ページや API を消したあと、`.next/types` に残った古い一覧で型チェックが落ちるため。
 - 型チェックやテストが失敗したら、そこで止めて、原因と、変更前から失敗していたかを調べて報告する（勝手に直さない）。
+
+## 本家に追いつく手順
+
+```bash
+git fetch upstream
+
+# 1. develop を本家と同じにする（早送りだけ。TENJO の変更は入れない）
+git switch develop
+git merge --ff-only upstream/develop
+git push origin develop
+
+# 2. 本家の変更を、TENJO の土台に取り込むブランチを作る
+git switch -c tenjo/sync-YYYYMMDD tenjo/main
+git merge upstream/develop
+# ぶつかった所を直し、typegen・型チェック・テストを通してコミットする
+
+# 3. push して、tenjo/sync-YYYYMMDD → tenjo/main の PR を作る（push はオーナーの許可を得てから）
+```
 
 ## 進捗
 
