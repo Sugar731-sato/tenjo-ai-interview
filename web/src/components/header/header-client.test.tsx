@@ -14,12 +14,6 @@ vi.mock("next/image", () => ({
   default: ({ alt }: { alt: string }) => <span role="img" aria-label={alt} />,
 }));
 vi.mock(
-  "@/features/bill-difficulty/client/components/difficulty-selector",
-  () => ({
-    DifficultySelector: () => null,
-  })
-);
-vi.mock(
   "@/features/interview-session/client/components/interview-header-actions",
   () => ({
     InterviewHeaderActions: () => null,

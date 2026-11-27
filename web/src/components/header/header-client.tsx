@@ -3,12 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { DifficultySelector } from "@/features/bill-difficulty/client/components/difficulty-selector";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { InterviewHeaderActions } from "@/features/interview-session/client/components/interview-header-actions";
 import { sendDifficultyStateEvent } from "@/lib/analytics/preference-state-events";
 import { useOnPageView } from "@/lib/analytics/use-on-page-view";
-import { isInterviewPage, isMainPage } from "@/lib/page-layout-utils";
+import { isInterviewPage } from "@/lib/page-layout-utils";
 import { routes } from "@/lib/routes";
 import { HamburgerMenu } from "./hamburger-menu";
 
@@ -18,13 +17,10 @@ interface HeaderClientProps {
 
 export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
   const pathname = usePathname();
-  const showDifficultySelector = isMainPage(pathname);
   const showInterviewActions = isInterviewPage(pathname);
 
   // Headerは1ページに1つだけ常時マウントされるため、
   // ここで難易度設定をページ表示のたびにGAへ送る
-  // (DifficultySelectorはmarkdown埋め込み等で複数箇所に
-  //  同時マウントされ得るため、送信元には適さない)
   useOnPageView(() => sendDifficultyStateEvent(difficultyLevel));
 
   return (
@@ -55,13 +51,9 @@ export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
 
           {/* Navigation */}
           <nav
-            // 暗い背景の上では、オンのスイッチ(bg-primary)が背景と同じ色になるため、アクセント色にする
-            className="flex items-center space-x-2 [&_[data-slot=switch][data-state=checked]]:bg-tenjo-accent"
+            className="flex items-center space-x-2"
             aria-label="補助ナビゲーション"
           >
-            {showDifficultySelector && (
-              <DifficultySelector currentLevel={difficultyLevel} />
-            )}
             {showInterviewActions && <InterviewHeaderActions />}
             <HamburgerMenu />
           </nav>
