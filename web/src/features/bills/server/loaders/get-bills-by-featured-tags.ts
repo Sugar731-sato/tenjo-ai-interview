@@ -1,7 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
-import { getActiveDietSession } from "@/features/diet-sessions/server/loaders/get-active-diet-session";
 import { CACHE_TAGS } from "@/lib/cache-tags";
 import type { BillsByTag } from "../../shared/types";
 import {
@@ -12,19 +11,14 @@ import {
 
 /**
  * Featured表示用の議案をタグごとにグループ化して取得
- * featured_priorityが設定されているタグを持つアクティブな国会会期の議案を優先度順に取得
- * アクティブな国会会期がない場合は全件取得
+ * featured_priorityが設定されているタグを持つ議案を優先度順に取得する（会期では絞らない）
  */
 export async function getBillsByFeaturedTags(): Promise<BillsByTag[]> {
   // キャッシュ外でcookiesにアクセス
   const difficultyLevel = await getDifficultyLevel();
-  const activeSession = await getActiveDietSession();
 
   try {
-    return await _getCachedBillsByFeaturedTags(
-      difficultyLevel,
-      activeSession?.id ?? null
-    );
+    return await _getCachedBillsByFeaturedTags(difficultyLevel, null);
   } catch (error) {
     // 取得失敗はキャッシュ関数の外で受ける。中で空配列に変換すると、失敗が
     // 正常な結果として10分キャッシュされてしまう。トップは他のセクションが
