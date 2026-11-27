@@ -113,8 +113,18 @@
   --color-mirai-gradient-end: #e6dcc3;
 
   /* TENJO KANAZAWA brand(本家の teal 系トークンの置き換え) */
+  --color-tenjo-base: #311915;
   --color-tenjo-cream: #fbf5e6;
+  --color-tenjo-paper: #fffdf7;
   --color-tenjo-bubble: #f3ead2;
+  --color-tenjo-rule: #e6dcc3;
+  --color-tenjo-sub: #5c5249;
+  --color-tenjo-accent: #a4262c;
+
+  /* TENJO の角丸(--radius は shadcn 全体に効くので変えず、別名で持つ) */
+  --radius-tenjo-badge: 4px;
+  --radius-tenjo-card: 8px;
+  --radius-tenjo-panel: 12px;
 
   /* Topic analysis */
   --color-topic-info-bg: #e5f3f0;
@@ -292,6 +302,15 @@
   .font-lexend {
     font-family: var(--font-lexend-giga), system-ui, sans-serif;
   }
+}
+
+/* 英語の小さなラベル(例: 見出しの上の "PRIVACY POLICY") */
+@utility label-en {
+  font-family: var(--font-lexend-giga), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
 }
 
 /* カスタムアニメーション */
